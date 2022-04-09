@@ -1,7 +1,7 @@
 :root {
   --color-primary: rgb(23, 38, 124);
   --color-white: white;
-  --header-height: 60px;
+  --header-height: 9vh;
   --color-secondary: rgb(251, 146, 60);
 }
 
@@ -20,6 +20,7 @@ p {
   box-sizing: border-box;
   font-family: "Anek Tamil", sans-serif;
   margin: 0;
+  overflow-x: hidden;
   background-color: #eee;
 }
 
@@ -33,12 +34,14 @@ p {
 /* ====================== */
 
 .left__side--header {
-  padding: 15px;
   background-color: var(--color-primary);
   display: flex;
   align-items: center;
   gap: 20px;
   height: var(--header-height);
+  position: sticky;
+  z-index: 20;
+  top: 0;
   /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.342); */
 }
 
@@ -57,19 +60,29 @@ p {
   font-size: 16px;
 }
 
-.right__side {
+.right__side--header {
   width: 100%;
-  height: var(--header-height);
-  /* height: 100%; */
+  height: calc(var(--header-height));
   background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: calc(var(--header-height));
   padding: 15px;
-  /* background-color: black; */
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.342); */
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.227);
 }
 
 /* ====================== */
 /* ======== MAIN ======== */
 /* ====================== */
+
+.left__site--main {
+  position: sticky;
+  top: var(--header-height);
+  padding: 10px;
+}
 
 .title__main {
   display: flex;
@@ -77,6 +90,7 @@ p {
   align-items: center;
   padding: 10px 0;
   border-bottom: 3px solid var(--color-secondary);
+  margin-bottom: 5px;
 }
 
 .title__main--h1 {
@@ -90,23 +104,105 @@ p {
 }
 
 .left__side {
-  height: 98vh;
+  height: 94vh;
+  overflow-y: scroll;
   background-color: var(--color-white);
   position: sticky;
-  top: 0;
+  top: var(--header-height);
+}
+
+.left__side::-webkit-scrollbar {
+  width: 5px;
+}
+
+.left__side::-webkit-scrollbar-track {
+  background: linear-gradient(0deg, black 0%, gray 100%);
+}
+
+.left__side::-webkit-scrollbar-thumb {
+  background: transparent;
+  box-shadow: 0px 0px 0px 100vh white;
 }
 
 .sura {
-  padding: 15px;
+  padding: 15px 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  border-radius: 15px;
 }
 
+.sura:hover {
+  background-color: rgba(128, 128, 128, 0.187);
+}
+
+/* .sura:focus-visible {
+  background-color: green;
+}
+
+.sura:focus {
+  background-color: green;
+} */
+
 .name__sura {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .oyatlar {
+  margin-top: 10px;
   font-size: 14px;
+  color: #777;
+}
+
+.arab__name {
+  color: var(--color-secondary);
+  font-size: 24px;
+  text-align: end;
+}
+
+.arab__name--title {
+  font-size: 40px;
+}
+
+.right__side--main {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.main__cart {
+  padding: 30px;
+  background-color: var(--color-white);
+  border-radius: 15px;
+}
+
+.oyat__tartib-raqam {
+  font-size: 32px;
+}
+
+.heading__cart {
+  font-size: 18px;
+  color: #777;
+  margin: 30px 0 10px;
+}
+
+.arab__oyat,
+.english__oyat,
+.uzbek__oyat {
+  font-size: 22px;
+}
+
+.arab__oyat {
+  text-align: end;
+}
+
+/* .uzbek__oyat {
+  margin-bottom: 40px;
+} */
+
+.suralar__umum {
+  display: flex;
+  flex-direction: column;
+  /* overflow-y: scroll; */
 }
