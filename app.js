@@ -80,7 +80,6 @@ suralarNomlari.addEventListener("click", function (e) {
     let data = await dataJson.json();
     let datas = data.data;
     let dataVerses = data.data.verses;
-    console.log(dataVerses);
     let dataUzbekcha = await fetch(
       "https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/editions/uzb-alaaudeenmansou.json"
     );
@@ -97,8 +96,12 @@ suralarNomlari.addEventListener("click", function (e) {
       gif.classList.remove("hidden");
     }
     oyatlarMain.innerHTML = "";
+    const suralar = document.querySelectorAll(".sura");
     let suraNumber = e.target.closest(".sura").id;
-    // suraNomi.textContent = e.target.closest(".sura").childElement.textContent;
+    suralar.forEach((element) => {
+      element.classList.remove("bg--color");
+    });
+    e.target.closest(".sura").classList.add("bg--color");
     fetchOyatlar(suraNumber);
   }
 });

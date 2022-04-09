@@ -176,7 +176,7 @@ a:hover {
 }
 
 .arab__name--title {
-  font-size: 40px;
+  font-size: 28px;
 }
 
 .right__side--main {
@@ -194,7 +194,7 @@ a:hover {
 }
 
 .oyat__tartib-raqam {
-  font-size: 32px;
+  font-size: 24px;
 }
 
 .heading__cart {
@@ -206,7 +206,7 @@ a:hover {
 .arab__oyat,
 .english__oyat,
 .uzbek__oyat {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .arab__oyat {
@@ -236,10 +236,14 @@ a:hover {
   left: 62%;
   transform: translateX(-50%);
   top: 500px;
-  transition: all 1s;
+  transition: all 0.3s;
   z-index: -1;
 }
 
 .hidden {
   visibility: hidden;
+}
+
+.bg--color {
+  background-color: rgba(22, 246, 55, 0.758);
 }
