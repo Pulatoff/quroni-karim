@@ -1,6 +1,8 @@
 :root {
   --color-primary: rgb(23, 38, 124);
   --color-white: white;
+  --header-height: 60px;
+  --color-secondary: rgb(251, 146, 60);
 }
 
 h1,
@@ -11,12 +13,14 @@ h5,
 h6,
 p {
   margin: 0;
+  color: #333;
 }
 
 .body {
   box-sizing: border-box;
   font-family: "Anek Tamil", sans-serif;
   margin: 0;
+  background-color: #eee;
 }
 
 .container {
@@ -34,6 +38,7 @@ p {
   display: flex;
   align-items: center;
   gap: 20px;
+  height: var(--header-height);
   /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.342); */
 }
 
@@ -54,11 +59,54 @@ p {
 
 .right__side {
   width: 100%;
-  height: 100%;
+  height: var(--header-height);
+  /* height: 100%; */
+  background-color: var(--color-white);
+  padding: 15px;
   /* background-color: black; */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.342);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.342); */
 }
 
 /* ====================== */
-/* ======= HEADER ======= */
+/* ======== MAIN ======== */
 /* ====================== */
+
+.title__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 3px solid var(--color-secondary);
+}
+
+.title__main--h1 {
+  font-size: 24px;
+}
+
+.suralar {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-white);
+}
+
+.left__side {
+  height: 98vh;
+  background-color: var(--color-white);
+  position: sticky;
+  top: 0;
+}
+
+.sura {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name__sura {
+  font-size: 24px;
+}
+
+.oyatlar {
+  font-size: 14px;
+}
