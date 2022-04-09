@@ -1,5 +1,6 @@
 const suralarNomlari = document.querySelector(".suralar__umum");
 const oyatlarMain = document.querySelector(".right__side--main");
+const suraNomi = document.querySelector(".arab__name--title");
 
 let arrayBig = [];
 
@@ -93,7 +94,7 @@ suralarNomlari.addEventListener("click", function (e) {
   if (e.target.closest(".sura")) {
     oyatlarMain.innerHTML = "";
     let suraNumber = e.target.closest(".sura").id;
-
+    // suraNomi.textContent = e.target.closest(".sura").childElement.textContent;
     fetchOyatlar(suraNumber);
   }
 });
