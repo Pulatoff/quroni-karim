@@ -9,6 +9,7 @@ async function getFetchs() {
   let jsonData = await fetch("https://api.quran.sutanlab.id/surah");
   let datas = await jsonData.json();
   let dataNames = datas.data;
+  console.log(dataNames);
   dataNames.forEach((element) => {
     renderHtml(element);
   });
@@ -34,9 +35,9 @@ function renderHtml(obj) {
   let html = `<div class="sura" id="${obj.number}">
   <div class="left__site--sura">
     <h3 class="name__sura">
-      <span class="${obj.number}">${obj.number}.</span> ${obj.name.translation.en} сураси
+      <span class="${obj.number}">${obj.number}.</span> ${obj.name.transliteration.id}
     </h3>
-    <h4 class="oyatlar">Маданий, ${obj.numberOfVerses} ояйтдан иборат</h4>
+    <h4 class="oyatlar">${obj.revelation.id}, ${obj.numberOfVerses} oyatdan iborat</h4>
   </div>
   <div class="right__site--sura">
     <h3 class="arab__name">${obj.name.long}</h3>
@@ -73,37 +74,42 @@ function oyatlarRenderHtml(obj, objUzb) {
 </div>`;
   oyatlarMain.insertAdjacentHTML("beforeend", html);
 }
-
-suralarNomlari.addEventListener("click", function (e) {
-  async function fetchOyatlar(number) {
-    let dataJson = await fetch(`https://api.quran.sutanlab.id/surah/${number}`);
-    let data = await dataJson.json();
-    let datas = data.data;
-    let dataVerses = data.data.verses;
-    let dataUzbekcha = await fetch(
-      "https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/editions/uzb-alaaudeenmansou.json"
-    );
-    let dataUZbek = await dataUzbekcha.json();
-    let quran = dataUZbek.quran;
-    sortSura(quran);
-    for (let i = 0; i < dataVerses.length; i++) {
-      oyatlarRenderHtml(dataVerses[i], arrayBig[number][i]);
+function clickOnSura() {
+  suralarNomlari.addEventListener("click", function (e) {
+    async function fetchOyatlar(number) {
+      let dataJson = await fetch(
+        `https://api.quran.sutanlab.id/surah/${number}`
+      );
+      let data = await dataJson.json();
+      let datas = data.data;
+      let dataVerses = data.data.verses;
+      let dataUzbekcha = await fetch(
+        "https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/editions/uzb-alaaudeenmansou.json"
+      );
+      let dataUZbek = await dataUzbekcha.json();
+      let quran = dataUZbek.quran;
+      sortSura(quran);
+      for (let i = 0; i < dataVerses.length; i++) {
+        oyatlarRenderHtml(dataVerses[i], arrayBig[number][i]);
+      }
+      console.log(arrayBig);
     }
-  }
 
-  if (e.target.closest(".sura")) {
-    if (gif.classList.contains("hidden")) {
-      gif.classList.remove("hidden");
+    if (e.target.closest(".sura")) {
+      if (gif.classList.contains("hidden")) {
+        gif.classList.remove("hidden");
+      }
+      oyatlarMain.innerHTML = "";
+      const suralar = document.querySelectorAll(".sura");
+      let suraNumber = e.target.closest(".sura").id;
+      suralar.forEach((element) => {
+        element.classList.remove("bg--color");
+      });
+      e.target.closest(".sura").classList.add("bg--color");
+      fetchOyatlar(suraNumber);
     }
-    oyatlarMain.innerHTML = "";
-    const suralar = document.querySelectorAll(".sura");
-    let suraNumber = e.target.closest(".sura").id;
-    suralar.forEach((element) => {
-      element.classList.remove("bg--color");
-    });
-    e.target.closest(".sura").classList.add("bg--color");
-    fetchOyatlar(suraNumber);
-  }
-});
+  });
+}
 
 getFetchs();
+clickOnSura();
