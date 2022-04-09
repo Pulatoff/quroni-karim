@@ -32,17 +32,31 @@ p {
 /* ====================== */
 /* ======= HEADER ======= */
 /* ====================== */
+a {
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 18px;
+  transition: all 0.4s;
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+.navbar {
+  padding: 0 40px;
+  display: flex;
+  gap: 30px;
+}
 
 .left__side--header {
   background-color: var(--color-primary);
+  justify-content: space-between;
   display: flex;
   align-items: center;
-  gap: 20px;
   height: var(--header-height);
   position: sticky;
   z-index: 20;
   top: 0;
-  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.342); */
 }
 
 .title__site {
@@ -62,7 +76,7 @@ p {
 
 .right__side--header {
   width: 100%;
-  height: calc(var(--header-height));
+  padding: 0 40px;
   background-color: var(--color-white);
   display: flex;
   align-items: center;
@@ -130,6 +144,7 @@ p {
   justify-content: space-between;
   align-items: flex-end;
   border-radius: 15px;
+  transition: 0.4s all;
 }
 
 .sura:hover {
@@ -168,6 +183,7 @@ p {
   padding: 50px;
   display: flex;
   flex-direction: column;
+  position: relative;
   gap: 50px;
 }
 
@@ -205,4 +221,25 @@ p {
   display: flex;
   flex-direction: column;
   /* overflow-y: scroll; */
+}
+
+.left__site--header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.load-gif {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 62%;
+  transform: translateX(-50%);
+  top: 500px;
+  transition: all 1s;
+  z-index: -1;
+}
+
+.hidden {
+  visibility: hidden;
 }

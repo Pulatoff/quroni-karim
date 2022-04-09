@@ -1,6 +1,7 @@
 const suralarNomlari = document.querySelector(".suralar__umum");
 const oyatlarMain = document.querySelector(".right__side--main");
 const suraNomi = document.querySelector(".arab__name--title");
+const gif = document.querySelector(".load-gif");
 
 let arrayBig = [];
 
@@ -33,7 +34,7 @@ function renderHtml(obj) {
   let html = `<div class="sura" id="${obj.number}">
   <div class="left__site--sura">
     <h3 class="name__sura">
-      <span class="${obj.number}">${obj.number}.</span> ${obj.name.translation.en} surasi
+      <span class="${obj.number}">${obj.number}.</span> ${obj.name.translation.en} сураси
     </h3>
     <h4 class="oyatlar">Маданий, ${obj.numberOfVerses} ояйтдан иборат</h4>
   </div>
@@ -92,6 +93,9 @@ suralarNomlari.addEventListener("click", function (e) {
   }
 
   if (e.target.closest(".sura")) {
+    if (gif.classList.contains("hidden")) {
+      gif.classList.remove("hidden");
+    }
     oyatlarMain.innerHTML = "";
     let suraNumber = e.target.closest(".sura").id;
     // suraNomi.textContent = e.target.closest(".sura").childElement.textContent;
