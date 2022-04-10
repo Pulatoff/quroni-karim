@@ -2,6 +2,7 @@ const suralarNomlari = document.querySelector(".suralar__umum");
 const oyatlarMain = document.querySelector(".right__side--main");
 const suraNomi = document.querySelector(".arab__name--title");
 const gif = document.querySelector(".load-gif");
+const openLeftSide = document.querySelector(".response")
 
 let arrayBig = [];
 
@@ -96,9 +97,6 @@ function clickOnSura() {
     }
 
     if (e.target.closest(".sura")) {
-      if (gif.classList.contains("hidden")) {
-        gif.classList.remove("hidden");
-      }
       oyatlarMain.innerHTML = "";
       const suralar = document.querySelectorAll(".sura");
       let suraNumber = e.target.closest(".sura").id;
@@ -108,8 +106,16 @@ function clickOnSura() {
       e.target.closest(".sura").classList.add("bg--color");
       fetchOyatlar(suraNumber);
     }
+    if(document.querySelector('.left__side').classList.contains('transform')){
+      document.querySelector('.left__side').classList.remove('transform')
+    }
   });
 }
+
+openLeftSide.addEventListener('click',function(e){
+  let left = document.querySelector('.left__side');
+  left.classList.toggle('transform')
+})
 
 getFetchs();
 clickOnSura();

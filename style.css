@@ -1,8 +1,11 @@
 :root {
   --color-primary: rgb(23, 38, 124);
   --color-white: white;
-  --header-height: 9vh;
-  --color-secondary: rgb(251, 146, 60);
+  --header-height: 80px;
+  --color-secondary: rgb(240, 203, 173);
+  --font-text:16px;
+  --font-heading:24px;
+  --font-small:14px;
 }
 
 h1,
@@ -35,7 +38,7 @@ p {
 a {
   text-decoration: none;
   color: var(--color-white);
-  font-size: 18px;
+  font-size: var(--font-text);
   transition: all 0.4s;
 }
 
@@ -61,7 +64,7 @@ a:hover {
 
 .title__site {
   color: var(--color-white);
-  font-size: 24px;
+  font-size:var(--font-heading);
 }
 
 .img__logo {
@@ -71,10 +74,11 @@ a:hover {
 .subtitle__site {
   color: var(--color-white);
   margin: 5px;
-  font-size: 16px;
+  font-size: var(--font-text);
 }
 
 .right__side--header {
+
   width: 100%;
   padding: 0 40px;
   background-color: var(--color-white);
@@ -108,7 +112,7 @@ a:hover {
 }
 
 .title__main--h1 {
-  font-size: 24px;
+  font-size: var(--font-heading);
 }
 
 .suralar {
@@ -123,6 +127,7 @@ a:hover {
   background-color: var(--color-white);
   position: sticky;
   top: var(--header-height);
+  transition: all 0.5s;
 }
 
 .left__side::-webkit-scrollbar {
@@ -160,23 +165,23 @@ a:hover {
 } */
 
 .name__sura {
-  font-size: 20px;
+  font-size: var(--font-text);
 }
 
 .oyatlar {
   margin-top: 10px;
-  font-size: 14px;
+  font-size: var(--font-small);
   color: #777;
 }
 
 .arab__name {
   color: var(--color-secondary);
-  font-size: 24px;
+  font-size: var(--font-heading);
   text-align: end;
 }
 
 .arab__name--title {
-  font-size: 28px;
+  font-size: var(--font-heading);
 }
 
 .right__side--main {
@@ -194,11 +199,11 @@ a:hover {
 }
 
 .oyat__tartib-raqam {
-  font-size: 24px;
+  font-size: var(--font-heading);
 }
 
 .heading__cart {
-  font-size: 18px;
+  font-size: var(--font-text);
   color: #777;
   margin: 30px 0 10px;
 }
@@ -206,21 +211,18 @@ a:hover {
 .arab__oyat,
 .english__oyat,
 .uzbek__oyat {
-  font-size: 20px;
+  font-size: var(--font-text);
 }
 
 .arab__oyat {
   text-align: end;
 }
 
-/* .uzbek__oyat {
-  margin-bottom: 40px;
-} */
+
 
 .suralar__umum {
   display: flex;
   flex-direction: column;
-  /* overflow-y: scroll; */
 }
 
 .left__site--header {
@@ -247,3 +249,13 @@ a:hover {
 .bg--color {
   background-color: rgba(22, 246, 55, 0.758);
 }
+
+.response{
+  visibility: hidden;
+  font-size: var(--font-text);
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+
